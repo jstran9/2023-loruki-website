@@ -1,0 +1,729 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@400;700&family=Roboto:wght@400;500;700&display=swap");
+
+/*
+ * the root scope (can be used anywhere)
+ * defining css properties (variables)
+ */
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+}
+
+/*
+ * universal selector (all elements
+ */
+* {
+  /* 
+   * allows us to add padding and borders and other attributes without
+   * adding to width of an element. 
+  */
+  box-sizing: border-box;
+  /*
+   * reset padding and margin
+   */
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  /*
+   * use a google font on the text for the home page. 
+  */
+  font-family: "Lato", sans-serif;
+  /*
+   * change color for text.
+   */
+  color: #333;
+  /*
+   * increase the amount of spacing between items.
+   */
+  line-height: 1.6;
+}
+
+ul {
+  /* 
+   * get rid of bullet points
+  */
+  list-style-type: none;
+}
+
+a {
+  /*
+   * get rid of underline for links.
+   */
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2 {
+  /*
+   * make text slightly less bold
+   */
+  font-weight: 300;
+  line-height: 1.2;
+  /*
+   * 10 pixels for top and bottom
+   * no margin for left and right.
+   */
+  margin: 10px 0;
+}
+
+p {
+  /*
+   * create spacing between paragraphs.
+   */
+  margin: 10px 0;
+}
+
+img {
+  /*
+   * make items not spam outside of their container.
+   */
+  width: 100%;
+}
+
+code,
+pre {
+  background: #333;
+  color: white;
+  padding: 10px;
+}
+
+.hidden {
+  /*
+   * hide the element
+   */
+  visibility: hidden;
+  /*
+   * set this to make it still take up the space as if it were visible.
+   */
+  height: 0;
+}
+
+/*
+ * Navbar styling
+ */
+.navbar {
+  background-color: var(--primary-color);
+  /* choose color contrasting to the background*/
+  color: #fff;
+  /*
+   * items in the navbar will be horizontally aligned.
+  */
+  height: 70px;
+}
+
+/*
+ * for unordered lists inside of a navbar wrapper.
+ */
+.navbar ul {
+  display: flex;
+}
+
+/* 
+ * for anchor tags inside of a navbar wrapper
+ */
+.navbar a {
+  color: #fff;
+  /* 
+   * break apart links a bit. 
+   * this will help push the links further apart.
+   */
+  padding: 10px;
+  /*
+   * no margin at the top and bottom, 5px left and right.
+   */
+  margin: 0 5px;
+}
+
+/*
+ * when we hover over the anchor tags (links) inside of a navbar wrapper.
+ */
+.navbar a:hover {
+  border-bottom: 2px #fff sol id;
+}
+
+/*
+ * if flex is inside (one tag/element below) the navbar apply below styles.
+ */
+.navbar .flex {
+  justify-content: space-between;
+}
+
+/*
+ * Showcase (called 'hero' as well)
+ */
+.showcase {
+  height: 400px;
+  background-color: var(--primary-color);
+  color: #fff;
+  /*
+   * set position relative so that if we need to position anything
+   * 'absolute' inside of our showcase wrapper then this will be possible.
+   */
+  position: relative;
+}
+
+.showcase h1 {
+  /* 
+   * make our h1 font/text bigger than the h2 tag.
+   */
+  font-size: 40px;
+}
+
+.showcase p {
+  /*
+   * for paragraphs inside of the showcase do 20px of margin vertically.
+   * note: above we have a margin of 10px top and bottom for paragraphs.
+   */
+  margin: 20px 0;
+}
+
+/*
+ * customizing our showcase grid.
+ * we have it 1fr on each side but will change this
+ */
+.showcase .grid {
+  /*
+   * use this to prevent a scrollbar in our showcase-form
+   * but note that our form goes past showcase container's bottom border.
+   */
+  overflow: visible;
+  /* 
+   * left side is slightly wider than right side. 
+   */
+  grid-template-columns: 55% 45%;
+  gap: 30px;
+}
+
+.showcase-text {
+  /*
+   * documentation: https://www.w3schools.com/css/css3_animations.asp
+   * go down to "Animation Shorthand Property" for the shorthand we use below.
+   * animation name
+   * animation duration (how long animation takes).
+   * animation timing function.
+   */
+  animation: slideInFromLeft 1s ease-in;
+}
+
+/*
+ * style our form (showcase-form) within our showcase section.
+ */
+.showcase-form {
+  /*
+   * we need to use relative or absolute positioning to use either 'top' or 'bottom' properties.
+   */
+  position: relative;
+  top: 60px;
+  height: 350px;
+  width: 400px;
+  padding: 40px;
+  /*
+   * make sure our form is always in the front
+   */
+  z-index: 100;
+  /*
+   * push our form to the right.
+   */
+  justify-self: flex-end;
+  animation: slideInFromRight 1s ease-in;
+}
+
+/*
+ * style the elements in our form.
+ * form-control wraps our inputs
+ */
+.showcase-form .form-control {
+  /*
+   * create vertically spacing between our input fields and the button.
+   */
+  margin: 30px 0;
+}
+
+/*
+ * style the inputs but not our submit button
+ * note: we are targetting only text and email fields but not type of 'submit' (our form submit button).
+ */
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+  /* 
+   * get rid of border for our input fields. 
+  */
+  border: 0;
+  border-bottom: 1px solid #b4becb;
+  /*
+   * make it so the bottom of the border goes all the way across (horizontally) in our form.
+   */
+  width: 100%;
+  padding: 3px;
+  font-size: 16px;
+}
+
+/*
+ * get rid of the border that appears when we hover over our input fields.
+ */
+.showcase-form input:focus {
+  outline: none;
+}
+
+/*
+ * using pseudo selectors.
+ */
+.showcase::before,
+.showcase::after {
+  content: "";
+  position: absolute;
+  height: 100px;
+  /*
+   * go below our showcase container so we use a negative value.
+   */
+  bottom: -70px;
+  right: 0;
+  left: 0;
+  background: #fff;
+  /*
+   * can use scale, rotate, translateX, translateY, skew properties.
+   */
+  transform: skewY(-3deg);
+  /*
+   * for chrome and safari
+   */
+  -webkit-transform: skewY(-3deg);
+  /*
+   * for mozilla firefox.
+   */
+  -moz-transform: skewY(-3deg);
+  /*
+   * for microsoft.
+   */
+  -ms-transform: skewY(-3deg);
+}
+
+/*
+ * Stats
+ */
+.stats {
+  /* 
+   * push the contents of our stats container down.
+  */
+  padding-top: 100px;
+  animation: slideInFromBottom 1s ease-in;
+}
+
+/*
+ * restrict our heading for large screens and center content.
+ */
+.stats-heading {
+  max-width: 500px;
+  margin: auto;
+}
+
+/*
+ * increase the size of the font inside of the h3 tag
+ */
+.stats .grid h3 {
+  font-size: 35px;
+}
+
+/*
+ * increase the size of the font inside of the p tag
+ */
+.stats .grid p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 
+ * CLI section
+*/
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  /*
+   * can set rows to be different units.
+   * note: we're only filling the first row and not the second row.
+   */
+  grid-template-rows: repeat(2, 1fr);
+}
+
+/*
+ * we want the first item in the .cli .grid (desktop)
+ * so in our case we have the img tag.
+ */
+.cli .grid > *:first-child {
+  /*
+   * first child spanning across the grid from column 1 to column 2.
+   */
+  grid-column: 1 / span 2;
+  /*
+   * first child spanning vertically in the grid from row 1 to row 2.
+   */
+  grid-row: 1 / span 2;
+}
+
+/*
+ * Cloud section
+ */
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/*
+ * Languages section
+ */
+.languages .flex {
+  /*
+   * allow items to wrap (go to the next line when the browser is resized).
+   */
+  flex-wrap: wrap;
+}
+
+.languages .card {
+  /*
+   * we have the ability to use text-center onto each card
+   * but instead we can just use it here 
+   */
+  text-align: center;
+  /*
+   * top 18px
+   * bottom 10px
+   * left and right 40px
+   */
+  margin: 18px 10px 40px;
+}
+
+/* 
+ * increase the font size of each individual card 
+ * and create a slight spacing between the image and the text.
+*/
+.languages .card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  /*
+   * add a transition onto the transform property added in the hover.
+   */
+  transition: transform 0.2 ease-in;
+}
+
+.languages .card:hover {
+  /*
+   * move along the y-axis
+   * we move it up so we use negative pixels.
+   * if we use positive pixels we move it down.
+   */
+  transform: translateY(-15px);
+  /* transform: translateY(15px); */
+}
+
+/*
+ * Features section
+ */
+.features-head img {
+  /* .features-head img,
+.docs-head img { */
+  /*
+   * note our image is wrapped in a container and grid so we have two even 1fr elements
+   * (so the paragraph and image tags).
+   */
+  width: 200px;
+  /*
+   * move/justify only this item (the img tag)
+   */
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  /*
+   * move/justify only this item (the img tag)
+   */
+  justify-self: flex-end;
+}
+
+.features-main .card {
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 30px;
+}
+
+.features-main .grid > *:first-child {
+  /*
+   * span three columns for the first child.
+   */
+  grid-column: 1 / span 3;
+}
+
+/*
+ * grab the second child
+ */
+.features-main .grid > *:nth-child(2) {
+  /*
+   * span two columns for the second child..
+   */
+  grid-column: 1 / span 2;
+}
+
+/*
+ * Docs section
+ */
+.docs-head img {
+  /*
+   * note our image is wrapped in a container and grid so we have two even 1fr elements
+   * (so the paragraph and image tags).
+   */
+  width: 200px;
+  /*
+   * move/justify only this item (the img tag)
+   */
+  justify-self: flex-end;
+}
+
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  /*
+   * we want to align our first card at the top and middle.
+   * keep in mind our container is a row.
+   */
+  align-items: flex-start;
+}
+
+/*
+ * style our links (on the left side) of docs-main.
+ */
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 
+ * when we go over a link make it bold.
+*/
+.docs-main a:hover {
+  font-weight: bold;
+}
+
+/*
+ * Footer section
+ */
+.footer .social a {
+  /*
+   * separate out the social links.
+  */
+  margin: 0 10px;
+}
+
+/*
+ * Animations
+ * slide in certain content from left to right and top to down.
+*/
+@keyframes slideInFromLeft {
+  0% {
+    /*
+     * start off the screen (left side)
+     */
+    transform: translateX(-100%);
+  }
+
+  /*
+   * the animation will end up below.
+   */
+  100% {
+    /*
+     * end up in the normal position (0%)
+     */
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    /*
+     * start off the screen (right side)
+     */
+    transform: translateX(100%);
+  }
+
+  /*
+   * the animation will end up below.
+   */
+  100% {
+    /*
+     * end up in the normal position (0%)
+     */
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    /*
+     * start off the screen (top side)
+     */
+    transform: translateY(-100%);
+  }
+
+  /*
+   * the animation will end up below.
+   */
+  100% {
+    /*
+     * end up in the normal position (0%)
+     */
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    /*
+     * start off the screen (bottom side)
+     */
+    transform: translateY(100%);
+  }
+
+  /*
+   * the animation will end up below.
+   */
+  100% {
+    /*
+     * end up in the normal position (0%)
+     */
+    transform: translateX(0);
+  }
+}
+
+/*
+ * Media Queries/Responsiveness
+ */
+
+/* Tablets and under */
+@media (max-width: 768px) {
+  /*
+   * stack items vertically on small screens.
+   */
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
+    /*
+     * one single column to take up each element.
+     */
+    grid-template-columns: 1fr;
+    /*
+     * make the CLI area take up only one entire row per element.
+    */
+    grid-template-rows: 1fr;
+  }
+
+  .showcase {
+    /*
+     * have the showcase take the amount of the container.
+     * this will push down more on smaller screens so the form isn't
+     * blocking text from the stats section.
+     */
+    height: auto;
+  }
+
+  .showcase-text {
+    /*
+     * align text in the center.
+     */
+    text-align: center;
+    margin-top: 40px;
+    animation: slideInFromTop 1s ease-in;
+  }
+
+  .showcase-form {
+    /*
+      * move the form to the middle both horizontally and vertically.
+      * use justify-self on a flex or grid item (instead of a container) to justify only that item
+      */
+    justify-self: center;
+    margin: auto;
+    animation: slideInFromBottom 1s ease-in;
+  }
+
+  .cli .grid > *:first-child {
+    /*
+     * instead of spanning over more than one row and column just
+     * have the first element take up one row and one column.
+     */
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .features-head,
+  .features-subhead,
+  .docs-head {
+    /*
+     * line up the content into the middle.
+     */
+    text-align: center;
+  }
+
+  .features-head img,
+  .features-subhead img,
+  .docs-head img {
+    /*
+     * line up the img into the middle.
+     */
+    justify-self: center;
+  }
+
+  /*
+   * grab the first and second children.
+   */
+  .features-main .grid > *:first-child,
+  .features-main .grid > *:nth-child(2) {
+    /*
+     * stack every item on top of each other.
+     */
+    grid-column: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  /*
+   * height is 70px origfinally.
+   * we are trying to put the menu items under the logo.
+   * alternatively, can add a hamburger menu .
+   */
+  .navbar {
+    height: 110px;
+  }
+
+  .navbar .flex {
+    /*
+     * put the logo and the nav on top of each other.
+     */
+    flex-direction: column;
+  }
+
+  .navbar ul {
+    /*
+     * expand the items a bit by pushing them inward.
+     */
+    padding: 10px;
+    /*
+     * add a transparent black background.
+     */
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

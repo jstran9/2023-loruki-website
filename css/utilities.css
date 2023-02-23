@@ -1,0 +1,415 @@
+/*
+ * Utilities below (used all around the website.)
+ */
+
+/*
+ * container to limit how spaced out the logo will be from the navigation links.
+ */
+.container {
+  max-width: 1100px;
+  /*
+   * want container in the middle.
+   */
+  margin: 0 auto;
+  /*
+   * our logo has a top margin (space) via its <h1> tag
+   */
+  overflow: auto;
+  /*
+   * create padding for left and right.
+   */
+  padding: 0 40px;
+}
+
+/*
+ * a wrapping container to provide custom background, some rounded corners,
+ * format our form, make the inputs look nicer.
+ */
+.card {
+  background-color: #fff;
+  /* 
+   * modify our color from white so we can view the h2 text.
+   */
+  color: #333;
+  border-radius: 10px;
+  /*
+   * horizontal offset to 0
+   * vertical offset to 3px
+   * blur
+   * color
+   * rgba (last value is transpency value (an alpha value)
+   * note: this gives us a faint black color around our box/border.
+   */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  /* 
+   * push elements within our card/wrapper inward.
+   */
+  padding: 20px;
+  /*
+   * push the wrapper/card a bit inward.
+   */
+  margin: 10px;
+}
+
+/*
+ * our base button.
+ * note: we will use other classes to style other buttons differently.
+ */
+.btn {
+  /*
+   * buttons are links are inline by default.
+   * we want buttons and links to be inline-block
+   * inline is like a span (doesn't start on a new line) and can have
+   * width and height properties applied.
+   */
+  display: inline-block;
+  padding: 10px 30px;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+/*
+ * we have a button in our showcase text so we want to be able to view
+ * the styles of the 'btn' class.
+ * we need to modify the background-color of this button as it has the same
+ * color as the showcase's background.
+ */
+.btn-outline {
+  background-color: transparent;
+  border: 1px #fff solid;
+}
+
+/*
+ * for all buttons when we hover
+ */
+.btn:hover {
+  /* 
+   * by default scale is value of '1'
+   * when we hover over a button it will slightly shrink down.
+   */
+  transform: scale(0.98);
+}
+
+/*
+ * Backgrounds and colored buttons.
+ */
+.bg-primary,
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/*
+ * secondary colors.
+ */
+.bg-secondary,
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+/*
+ * dark colors
+ */
+.bg-dark,
+.btn-dark {
+  background-color: var(--dark-color);
+  color: #fff;
+}
+
+/*
+ * light colors.
+ */
+.bg-light,
+.btn-light {
+  background-color: var(--light-color);
+  color: #333;
+}
+
+/*
+ * any links in the backgrounds should be white
+ */
+.bg-primary a,
+.btn-primary a,
+.bg-secondary a,
+.btn-secondary a,
+.bg-dark a,
+.btn-dark a {
+  color: #fff;
+}
+
+/* Text colors */
+.text-primary {
+  color: var(--primary-color);
+}
+
+/*
+ * secondary colors.
+ */
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+/*
+ * dark colors
+ */
+.text-dark {
+  color: var(--dark-color);
+}
+
+/*
+ * light colors.
+ */
+.text-light {
+  color: var(--light-color);
+}
+
+/*
+ * Text sizes
+ */
+.lead {
+  font-size: 20px;
+}
+
+/*
+ * small font size.
+ */
+.sm {
+  /* 
+   * just use 16px or the root's font size.
+  */
+  font-size: 1rem;
+}
+
+/*
+ * medium font size.
+ */
+.md {
+  font-size: 2rem;
+}
+
+/*
+ * large font size.
+ */
+.lg {
+  font-size: 3rem;
+}
+
+/*
+ * extra large font size.
+ */
+.xl {
+  font-size: 4rem;
+}
+
+/*
+ * just align our text.
+ */
+.text-center {
+  text-align: center;
+}
+
+/*
+ * alert styles.
+ */
+.alert {
+  background-color: var(--light-color);
+  padding: 10px 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/*
+ * push text from the font awesome icon.
+ */
+.alert i {
+  margin-right: 10px;
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: #fff;
+}
+
+.alert-error {
+  background-color: var(--error-color);
+  color: #fff;
+}
+
+/*
+ * utility class so we don't need to make our container into a flex
+ */
+.flex {
+  display: flex;
+  /*
+   * move everything on the main (somtimes x axis)
+   * justify content makes it so items within the flex container are as far
+   * apart as possible.
+   * space-between takes the remaining space and puts it inbetween the flex items.
+   */
+  justify-content: center;
+  align-items: center;
+  /*
+   * make sure the height is 100% of what the container is.
+   */
+  height: 100%;
+}
+
+/*
+ * utility grid class.
+ */
+.grid {
+  /*
+   * like flexbox when we apply a grid class we will turn a container
+   * into a grid and each direct element/item (for example showcase-text and showcase-form)
+   * are grid elements.
+   */
+  display: grid;
+  /*
+   * define how big/wide (horizontally) we want each column.
+   * when we use 'fr' (fractional units) we will apply the total available space
+   * and divide it however is specified (below is 3 of 5 available units and 2 of 5 available units).
+   */
+  /* grid-template-columns: 3fr 2fr; */
+  /*
+   * we can use the repeat function to make our two elements completely even
+   */
+  grid-template-columns: repeat(2, 1fr);
+  /*
+   * by default, we have no gap/space between our elements
+   * note: 'gap' used to be called 'grid-gap'
+  */
+  gap: 20px;
+  /*
+   * center items horizontally
+   */
+  justify-content: center;
+  /*
+   * center items vertically (cross axis)
+   */
+  align-items: center;
+  /*
+   * our grid has no height but our container (showcase) has a height of 400px.
+   */
+  height: 100%;
+}
+
+/*
+ * divide our grid into three even elements.
+ */
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/*
+ * Margin
+ */
+.my-1 {
+  /* 
+   * rem unit is a css unit that is a multiplier of the root element's font size.
+   * the root element would be the "<html></html>" tag.
+   * 1 rem on top and bottom.
+   * if we don't define something in the root 1rem would be 16 pixels.
+   */
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 1.5rem 0;
+}
+
+.my-3 {
+  margin: 2rem 0;
+}
+
+.my-4 {
+  margin: 3rem 0;
+}
+
+.my-5 {
+  margin: 4rem 0;
+}
+
+.m-1 {
+  /* 
+   * rem unit is a css unit that is a multiplier of the root element's font size.
+   * the root element would be the "<html></html>" tag.
+   * 1 rem on top and bottom.
+   * if we don't define something in the root 1rem would be 16 pixels.
+   */
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 2rem;
+}
+
+.m-4 {
+  margin: 3rem;
+}
+
+.m-5 {
+  margin: 4rem;
+}
+
+/*
+ * Padding
+ */
+.py-1 {
+  /* 
+   * rem unit is a css unit that is a multiplier of the root element's font size.
+   * the root element would be the "<html></html>" tag.
+   * 1 rem on top and bottom.
+   * if we don't define something in the root 1rem would be 16 pixels.
+   */
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 1.5rem 0;
+}
+
+.py-3 {
+  padding: 2rem 0;
+}
+
+.py-4 {
+  padding: 3rem 0;
+}
+
+.py-5 {
+  padding: 4rem 0;
+}
+
+.p-1 {
+  /* 
+   * rem unit is a css unit that is a multiplier of the root element's font size.
+   * the root element would be the "<html></html>" tag.
+   * 1 rem on top and bottom.
+   * if we don't define something in the root 1rem would be 16 pixels.
+   */
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 2rem;
+}
+
+.p-4 {
+  padding: 3rem;
+}
+
+.p-5 {
+  padding: 4rem;
+}
